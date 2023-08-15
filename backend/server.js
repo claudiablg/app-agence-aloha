@@ -15,17 +15,20 @@ const PORT = process.env.PORT || 3000;
 // const PORT = 3000;
 
 // Connect to MongoDB
-// connectDB();
+connectDB();
 
 // custom middleware logger
 app.use(logger);
 
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
-app.use(credentials);
+// app.use(credentials);
 
 // Cross Origin Resource Sharing
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: '*',
+    credentials: true,
+}));
 
 // built-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: true }));
@@ -42,10 +45,6 @@ app.use(cookieParser());
 const routes = require('./routes');
 
 
-connectDB().then(() => {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
-
 // routes
 app.use('/', routes);
 
@@ -57,9 +56,13 @@ app.get("/", (req, res) => {
 app.use(verifyJWT);
 app.use(errorHandler);
 
-// mongoose.connection.once('open', () => {
-//   console.log('Connected to MongoDB');
+mongoose.connection.once('open', () => {
+  console.log('Connected to MongoDB');
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
+
+
+
+// connectDB().then(() => {
 //   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // });
-
-
