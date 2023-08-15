@@ -4,14 +4,14 @@ const serverless = require('serverless-http');
 const app = express();
 const path = require('path');
 const cors = require('cors');
-const corsOptions = require('./src/config/corsOptions');
+const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
 const mongoose = require('mongoose');
-const connectDB = require('./src/config/dbConn');
+const connectDB = require('./config/dbConn');
 // const PORT = process.env.PORT || 3050;
 const PORT = 3050;
 
@@ -43,7 +43,8 @@ app.use(cookieParser());
 const routes = require('./routes');
 
 // routes
-app.use('/', routes);
+// app.use('/', routes);
+app.use('/.netlify/functions/api', routes);
 
 
 // simple route
@@ -58,4 +59,5 @@ mongoose.connection.once('open', () => {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
 
+module.exports.handler = serverless(app);
 
