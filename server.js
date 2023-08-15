@@ -41,6 +41,11 @@ app.use(cookieParser());
 
 const routes = require('./routes');
 
+
+connectDB().then(() => {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
+
 // routes
 app.use('/', routes);
 
@@ -52,9 +57,6 @@ app.get("/", (req, res) => {
 app.use(verifyJWT);
 app.use(errorHandler);
 
-connectDB().then(() => {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
 // mongoose.connection.once('open', () => {
 //   console.log('Connected to MongoDB');
 //   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
