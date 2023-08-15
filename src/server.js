@@ -1,17 +1,16 @@
 require('dotenv').config();
 const express = require('express');
-const serverless = require('serverless-http');
 const app = express();
 const path = require('path');
 const cors = require('cors');
-const corsOptions = require('./config/corsOptions');
-const { logger } = require('./middleware/logEvents');
-const errorHandler = require('./middleware/errorHandler');
-const verifyJWT = require('./middleware/verifyJWT');
+const corsOptions = require('./src/config/corsOptions');
+const { logger } = require('./src/middleware/logEvents');
+const errorHandler = require('./src/middleware/errorHandler');
+const verifyJWT = require('./src/middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
-const credentials = require('./middleware/credentials');
+const credentials = require('./src/middleware/credentials');
 const mongoose = require('mongoose');
-const connectDB = require('./config/dbConn');
+const connectDB = require('./src/config/dbConn');
 // const PORT = process.env.PORT || 3050;
 const PORT = 3050;
 
@@ -40,11 +39,10 @@ app.use(cookieParser());
 //serve static files
 // app.use('/', express.static(path.join(__dirname, '/public')));
 
-const routes = require('./routes');
+const routes = require('./src/routes');
 
 // routes
-// app.use('/', routes);
-app.use('/.netlify/functions/api', routes);
+app.use('/', routes);
 
 
 // simple route
@@ -59,5 +57,4 @@ mongoose.connection.once('open', () => {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
 
-module.exports.handler = serverless(app);
 
