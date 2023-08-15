@@ -11,11 +11,11 @@ const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
-// const PORT = process.env.PORT || 3050;
-const PORT = 3050;
+const PORT = process.env.PORT || 3000;
+// const PORT = 3000;
 
 // Connect to MongoDB
-connectDB();
+// connectDB();
 
 // custom middleware logger
 app.use(logger);
@@ -52,9 +52,12 @@ app.get("/", (req, res) => {
 app.use(verifyJWT);
 app.use(errorHandler);
 
-mongoose.connection.once('open', () => {
-  console.log('Connected to MongoDB');
+connectDB().then(() => {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
+// mongoose.connection.once('open', () => {
+//   console.log('Connected to MongoDB');
+//   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// });
 
 
