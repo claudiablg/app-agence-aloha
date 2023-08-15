@@ -3,7 +3,6 @@
   "name": "app-agence-aloha",
   "version": "1.0.0",
   "description": "",
-  "main": "./src",
   "engines": {
     "node": "18.x"
   },
