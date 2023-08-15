@@ -1,0 +1,53 @@
+[
+  {
+    "_id": "638ab669b0eeaf9b1a905342",
+    "date": "2022-11-17T20:59:00.252Z",
+    "activities": [
+      {
+        "name": "Code",
+        "activity": [
+          {
+            "title": "Memories.jsx — tracking-timer",
+            "start": "2022-11-17T20:59:00.252Z",
+            "end": "2022-11-17T21:04:28.573Z",
+            "time": 4,
+            "url": ""
+          },
+          {
+            "title": "Label.style.jsx — tracking-timer",
+            "start": "2022-11-17T21:04:24.350Z",
+            "end": "2022-11-17T21:04:28.573Z",
+            "time": 4,
+            "url": ""
+          },
+          {
+            "title": "activities.json",
+            "start": "2022-11-17T21:04:48.382Z",
+            "end": "2022-11-17T21:05:08.636Z",
+            "time": 50,
+            "url": ""
+          }
+        ]
+      },
+      {
+        "name": "Google Chrome",
+        "activity": [
+          {
+            "title": "React App",
+            "start": "2022-11-17T20:59:04.402Z",
+            "end": "2022-11-17T20:59:20.295Z",
+            "time": 4416,
+            "url": "http://localhost:4000/home/[object%20Object]"
+          },
+          {
+            "title": "Hours – Timely",
+            "start": "2022-11-17T21:08:52.639Z",
+            "end": "2022-11-17T21:09:04.540Z",
+            "time": 228,
+            "url": "https://app.timelyapp.com/945986/calendar/day?date=2022-11-17&multiUserMode=false"
+          }
+        ]
+      }
+    ]
+  }
+]

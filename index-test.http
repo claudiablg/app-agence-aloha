@@ -1,0 +1,117 @@
+
+
+
+# POST http://localhost:3050/api/12324/entries HTTP/1.1
+# # Content-type: application/json
+
+# {
+#     "user_id": "12324",
+#     "date": "2022-11-19T19:17:00.857Z",
+#     "hours": "2",
+#     "minutes": "32",
+#     "note": "Étape de conception de design",   
+# }
+
+# POST http://localhost:3050/api/12324/events HTTP/1.1
+# # Content-type: application/json
+
+# {
+#     "user_id": "12324",
+#     "date": "2022-11-19T19:17:00.857Z",
+#     "hours": "2",
+#     "minutes": "32",
+#     "note": "Étape de conception de design",   
+# }
+# GET http://localhost:3050/api/home
+
+# GET http://localhost:3050/api/638ab669b0eeaf9b1a905342/activities/day?date=2022-11-19 HTTP/1.1
+
+# GET http://localhost:3050/api/12324/activities/week?date=2022-11-19 HTTP/1.1
+
+# GET http://localhost:3050/api/12324/activities/month?date=2022-11-19 HTTP/1.1
+
+# GET http://localhost:3050/api/12324/activities HTTP/1.1
+
+
+// AUTHENTIFICATION ROUTES
+# # //api/auth/signup
+POST http://localhost:3050/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "user": "alexandra1",
+    "pwd": "1"
+}
+
+###
+
+//api/auth/login
+POST http://localhost:3050/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "user": "alexandra1",
+    "pwd": "1"
+}
+
+### 
+
+//api/auth/logout
+//validate the refresh token to delete it when the user logout         
+POST http://localhost:3050/api/auth/logout HTTP/1.1
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzhlMmI1MWEzNmVlNjM0MmM1ZWRmZGYiLCJ0b2tlbklkIjoiNjM4ZTJiNTFhMzZlZTYzNDJjNWVkZmUwIiwiaWF0IjoxNjcwMjYxNTg1LCJleHAiOjE2NzI4NTM1ODV9.i4F6a5Hrgx7efwWzl-r8EDPXipX1shQigLqrjLCRG-s"
+}
+
+### 
+
+# //api/auth/accessToken
+POST http://localhost:3050/api/auth/accessToken HTTP/1.1
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzhlMjkzYjI2YmMwN2ZjOWQ1M2NjOTgiLCJ0b2tlbklkIjoiNjM4ZTI5NDIyNmJjMDdmYzlkNTNjYzliIiwiaWF0IjoxNjcwMjYxMDU4LCJleHAiOjE2NzI4NTMwNTh9.mCF6NP37ZtRa_lLtGIw-Ilf9JaDbEqJprvYP5qCq74g"
+}
+
+###
+
+//used to refresh the token when user logout or when the session is expired
+//api/auth/refreshToken
+POST http://localhost:3050/api/auth/refreshToken HTTP/1.1
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzhlMjkzYjI2YmMwN2ZjOWQ1M2NjOTgiLCJ0b2tlbklkIjoiNjM4ZTI5NDIyNmJjMDdmYzlkNTNjYzliIiwiaWF0IjoxNjcwMjYxMDU4LCJleHAiOjE2NzI4NTMwNTh9.mCF6NP37ZtRa_lLtGIw-Ilf9JaDbEqJprvYP5qCq74g"
+}
+
+###
+
+# // USERS ROUTES
+GET http://localhost:3050/api/users/profile
+
+
+###
+
+# // PROJECTS ROUTES
+
+# //api/projects
+GET http://localhost:3050/api/projects/638eaa2cbd6ce02ca4c9be25 HTTP/1.1
+
+
+###
+
+//api/projects/create-project
+
+POST http://localhost:3050/api/projects/create-project HTTP/1.1
+Content-Type: application/json
+
+{
+    "user": "638eaa2cbd6ce02ca4c9be25",
+    "title": "Site web",
+    "client": "Gubany"
+}
+
+
+# 638eaa2cbd6ce02ca4c9be25
