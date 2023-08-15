@@ -3,14 +3,14 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
-const corsOptions = require('./src/config/corsOptions');
-const { logger } = require('./src/middleware/logEvents');
-const errorHandler = require('./src/middleware/errorHandler');
-const verifyJWT = require('./src/middleware/verifyJWT');
+const corsOptions = require('./config/corsOptions');
+const { logger } = require('./middleware/logEvents');
+const errorHandler = require('./middleware/errorHandler');
+const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
-const credentials = require('./src/middleware/credentials');
+const credentials = require('./middleware/credentials');
 const mongoose = require('mongoose');
-const connectDB = require('./src/config/dbConn');
+const connectDB = require('./config/dbConn');
 // const PORT = process.env.PORT || 3050;
 const PORT = 3050;
 
@@ -39,7 +39,7 @@ app.use(cookieParser());
 //serve static files
 // app.use('/', express.static(path.join(__dirname, '/public')));
 
-const routes = require('./src/routes');
+const routes = require('./routes');
 
 // routes
 app.use('/', routes);
