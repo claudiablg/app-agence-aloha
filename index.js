@@ -27,12 +27,12 @@ app.use(logger);
 
 // mongoose.Promise = global.Promise; // Une promese, ici ça dit d'attendre pour un résultat quand on se connecte à la bd de mongo
  
-app.use((_req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
+// app.use((_req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', '*');
 
-  next();
-});
+//   next();
+// });
 
 
 // Cross Origin Resource Sharing
@@ -66,7 +66,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to the application." });
 });
 
-app.use(verifyJWT);
+// app.use(verifyJWT);
 app.use(errorHandler);
 
 
