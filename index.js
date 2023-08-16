@@ -37,7 +37,8 @@ app.use((_req, res, next) => {
 
 // Cross Origin Resource Sharing
 app.use(cors({
-    origin: '*',
+    origin: ["https://app-agence-aloha.vercel.app"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
 }));
 
