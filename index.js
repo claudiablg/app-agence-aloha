@@ -30,6 +30,9 @@ app.use(logger);
 app.use(cors({
     origin: '*',
     credentials: true,
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false
+    }),
 }));
 
 // built-in middleware to handle urlencoded form data
