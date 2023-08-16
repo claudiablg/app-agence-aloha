@@ -24,6 +24,8 @@ app.use(logger);
 // and fetch cookies credentials requirement
 // app.use(credentials);
 
+mongoose.Promise = global.Promise; // Une promese, ici ça dit d'attendre pour un résultat quand on se connecte à la bd de mongo
+ 
 // Cross Origin Resource Sharing
 app.use(cors({
     origin: '*',
@@ -42,6 +44,13 @@ app.use(cookieParser());
 //serve static files
 // app.use('/', express.static(path.join(__dirname, '/public')));
 
+mongoose
+  .connect(process.env.DATABASE_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  
+
 const routes = require('./routes');
 
 
@@ -57,12 +66,15 @@ app.get("/", (req, res) => {
 app.use(verifyJWT);
 app.use(errorHandler);
 
-
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-  })
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
+
+// connectDB().then(() => {
+//   app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`)
+//   })
+// })
 // mongoose.connection.once('open', () => {
 //   console.log('Connected to MongoDB');
 //   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
