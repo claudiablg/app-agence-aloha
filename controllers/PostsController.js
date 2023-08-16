@@ -2,8 +2,16 @@ const mongoose = require('mongoose');
 const User = require('../models/UsersModel');
 const Posts = require('../models/PostsModel');
 
-//get posts by userid
+//get posts
 const getPosts = async(req, res) => {
+    const foundPosts = await Posts.find().exec();
+    console.log(foundPosts)
+    if(!foundPosts) return res.json({'message': 'Aucun projet'})
+    res.send(foundPosts)
+}
+
+//get posts by userid
+const getPostsByUser = async(req, res) => {
     const userId = req.params.userId;
 
     const foundPosts = await Posts.find({userId: userId}).exec();
@@ -55,6 +63,7 @@ const deletePost = (req, res) => {
 
 module.exports = {
     getPosts,
+    getPostsByUser,
     addPost,
     updatePost,
     deletePost,
