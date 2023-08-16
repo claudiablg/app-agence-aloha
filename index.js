@@ -44,13 +44,6 @@ app.use(cookieParser());
 //serve static files
 // app.use('/', express.static(path.join(__dirname, '/public')));
 
-mongoose
-  .connect(process.env.DATABASE_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-  
-
 const routes = require('./routes');
 
 
@@ -66,15 +59,12 @@ app.get("/", (req, res) => {
 app.use(verifyJWT);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
 
-// connectDB().then(() => {
-//   app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`)
-//   })
-// })
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+  })
+})
 // mongoose.connection.once('open', () => {
 //   console.log('Connected to MongoDB');
 //   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
