@@ -37,10 +37,15 @@ app.use(logger);
 
 // Cross Origin Resource Sharing
 app.use(cors({
-    origin: ["https://app-agence-aloha.vercel.app"],
+    origin: "https://app-agence-aloha.vercel.app" |  "http://localhost:3050",
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
 }));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+})
 
 // built-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }));
