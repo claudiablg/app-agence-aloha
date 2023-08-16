@@ -24,7 +24,7 @@ app.use(logger);
 // and fetch cookies credentials requirement
 // app.use(credentials);
 
-mongoose.Promise = global.Promise; // Une promese, ici ça dit d'attendre pour un résultat quand on se connecte à la bd de mongo
+// mongoose.Promise = global.Promise; // Une promese, ici ça dit d'attendre pour un résultat quand on se connecte à la bd de mongo
  
 // Cross Origin Resource Sharing
 app.use(cors({
