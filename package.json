@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.ts",
+    "dev": "nodemon index.ts",
+    "vercel-build": "echo hello"
   },
   "author": "Claudia Bélanger",
   "license": "ISC",

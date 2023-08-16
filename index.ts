@@ -36,7 +36,7 @@ app.use((_req, res, next) => {
 
 // Cross Origin Resource Sharing
 app.use(cors({
-    origin: '*' | '',
+    origin: '*',
     credentials: true,
 }));
 
