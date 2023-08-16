@@ -42,7 +42,7 @@ app.use(cors({
 }));
 
 // built-in middleware to handle urlencoded form data
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // built-in middleware for json 
 app.use(express.json());
