@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 // const PORT = 3000;
 
 // Connect to MongoDB
-connectDB();
+// connectDB();
 
 // custom middleware logger
 app.use(logger);
@@ -57,10 +57,15 @@ app.use(verifyJWT);
 app.use(errorHandler);
 
 
-mongoose.connection.once('open', () => {
-  console.log('Connected to MongoDB');
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+  })
+})
+// mongoose.connection.once('open', () => {
+//   console.log('Connected to MongoDB');
+//   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// });
 
 
 
