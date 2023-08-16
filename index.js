@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3050;
 // const PORT = 3000;
 
 // Connect to MongoDB
@@ -53,6 +53,7 @@ app.use('/api', routes);
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the application." });
 });
+
 app.use(verifyJWT);
 app.use(errorHandler);
 
