@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
+const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 3050;
 // const PORT = 3000;
@@ -23,35 +24,28 @@ app.use(logger);
 
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
-// app.use(credentials);
+app.use(credentials);
 
-// mongoose.Promise = global.Promise; // Une promese, ici ça dit d'attendre pour un résultat quand on se connecte à la bd de mongo
- 
-// app.use((_req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Headers', '*');
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
-//   next();
-// });
 
 
 // Cross Origin Resource Sharing
 app.use(cors({
-    origin: "https://app-agence-aloha.vercel.app" |  "http://localhost:3050",
-    methods: ["POST", "GET", "PUT", "DELETE"],
+    origin: [ "https://app-agence-aloha.vercel.app" , "http://localhost:3050" , "http://localhost:5173", "http://127.0.0.1:5173"] ,
+    // allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
     credentials: true,
 }));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-})
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', '*');
+//   next();
+// })
 
-// built-in middleware to handle urlencoded form data
-app.use(express.urlencoded({ extended: false }));
 
-// built-in middleware for json 
-app.use(express.json());
 
 //middleware for cookies
 app.use(cookieParser());

@@ -10,15 +10,15 @@ const PostsSchema = new Schema({
     },
     title: {
         type: String,
-        required: true,
+        // required: true,
     },
     description: {
         type: String,
-        required: true,
+        // required: true,
     },
     category: {
         type: Array,
-        required: true,
+        // required: true,
     },
     date: Date,
 });

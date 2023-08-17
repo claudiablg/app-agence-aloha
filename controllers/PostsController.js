@@ -23,8 +23,9 @@ const getPostsByUser = async(req, res) => {
 //add posts by userid
 const addPost = (req, res) => {
     const userId = req.params.userId;
-
+    console.log(req.body);
     const { title, description, category } = req.body;
+    console.log(req.body);
     const newPost = new Posts({
         userId: userId,
         title: title,
@@ -34,7 +35,7 @@ const addPost = (req, res) => {
     })
 
     newPost.save((err, posts) => {
-        if(err) res.send(err);
+        if(err) res.send('cest un erreur' + err);
         else res.status(200).send({"Success": true})
     })
 }

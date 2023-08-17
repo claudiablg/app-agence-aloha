@@ -6,7 +6,7 @@ const handleLogin = async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ 'message': 'Username and password are required.' });
 
-    const foundUser = await User.findOne({ username: email }).exec();
+    const foundUser = await User.findOne({ email: email }).exec();
     const id = foundUser._id.toString();
 
     if (!foundUser) return res.sendStatus(401); //Unauthorized 
@@ -17,7 +17,7 @@ const handleLogin = async (req, res) => {
         const accessToken = jwt.sign(
             {
                 "UserInfo": {
-                    "username": foundUser.username,
+                    "email": foundUser.email,
                 }
             },
             process.env.ACCESS_TOKEN_SECRET,
@@ -25,7 +25,7 @@ const handleLogin = async (req, res) => {
         );
         const refreshToken = jwt.sign(
             {   
-                "username": foundUser.username,
+                "email": foundUser.email,
             },
             process.env.REFRESH_TOKEN_SECRET,
             { expiresIn: '1d' }
@@ -43,8 +43,8 @@ const handleLogin = async (req, res) => {
                 sameSite: 'None', 
                 maxAge: 24 * 60 * 60 * 1000
         });
-        const email = result.username;
-        res.json({ id, email, accessToken });
+        const email = result.email;
+        res.status(200).json({ id, email, accessToken });
 
     } else {
         res.sendStatus(401);
