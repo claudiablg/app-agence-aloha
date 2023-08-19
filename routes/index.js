@@ -3,12 +3,12 @@ var router = express.Router();
 
 const authRouter = require('./auth');
 const usersRouter = require('./users');
-const postsRouter = require('./posts');
+const articlesRouter = require('./articles');
 const questionsRouter = require('./questions');
 
 router.use('/users', usersRouter);
 router.use('/auth', authRouter);
-router.use('/posts', postsRouter);
+router.use('/articles', articlesRouter);
 router.use('/questions', questionsRouter);
 
 module.exports = router;

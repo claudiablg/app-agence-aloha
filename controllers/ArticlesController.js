@@ -1,0 +1,82 @@
+const mongoose = require('mongoose');
+const User = require('../models/UsersModel');
+const Articles = require('../models/ArticlesModel');
+
+//get articles
+const getArticles = async(req, res) => {
+    const foundArticles = await Articles.find().exec();
+    console.log(foundArticles)
+    if(!foundArticles) return res.json({'message': 'Aucun projet'})
+    res.send(foundArticles)
+}
+
+// get posts by articleId
+const getArticleById = async(req, res) => {
+    const articleId = req.params.articleId;
+
+    const foundArticles = await Articles.find({_id: articleId}).exec();
+    console.log(foundArticles)
+    if(!foundArticles) return res.json({'message': 'Aucun projet'})
+    res.send(foundArticles)
+}
+
+//get posts by userid
+const getArticlesByUser = async(req, res) => {
+    const userId = req.params.userId;
+
+    const foundArticles = await Articles.find({userId: userId}).exec();
+    console.log(foundArticles)
+    if(!foundArticles) return res.json({'message': 'Aucun projet'})
+    res.send(foundArticles)
+}
+
+//add posts by userid
+const addArticle = (req, res) => {
+    const userId = req.params.userId;
+    console.log(req.body);
+    const { title, description, category } = req.body;
+    console.log(req.body);
+    const newArticle = new Articles({
+        userId: userId,
+        title: title,
+        description: description,
+        category: category,
+        date: new Date(),
+    })
+
+    newArticle.save((err, posts) => {
+        if(err) res.send('cest un erreur' + err);
+        else res.status(200).send({"Success": true})
+    })
+}
+
+//update post by article id
+const updateArticle = (req, res) => {
+    const articleId = req.params.articleId;
+
+    const { title, description, category } = req.body;
+
+    Articles.findByIdAndUpdate({_id: articleId}, { title: title, description: description, category: category}, (err, posts) => {
+        if(err) res.send(err)
+        else res.status(200).send({"Success": true})
+    })
+}
+
+//delete post by article id
+const deleteArticle= (req, res) => {
+    const articleId = req.params.articleId;
+
+    Articles.findByIdAndRemove({_id: articleId}, (err, post) => {
+        if(err) res.send(err);
+        else res.status(200).send({"Success": true});
+    })
+}
+
+module.exports = {
+    getArticles,
+    getArticleById,
+    getArticlesByUser,
+    addArticle,
+    updateArticle,
+    deleteArticle,
+}

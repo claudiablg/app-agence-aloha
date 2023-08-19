@@ -22,15 +22,20 @@ Content-Type: application/json
 
 ### POSTS ROUTES
 
-### api/posts
-# GET http://localhost:3050/api/posts/d HTTP/1.1
-GET https://app-agence-aloha.vercel.app/api/posts/d HTTP/1.1
+### api/articles
+# GET http://localhost:3050/api/articles/d HTTP/1.1
+GET https://app-agence-aloha.vercel.app/api/articles/d HTTP/1.1
 
-### api/posts/:userId
-GET http://localhost:3050/api/posts/64db8bc94eed2088a3745e77 HTTP/1.1
+### api/articles
+# GET http://localhost:3050/api/articles/d HTTP/1.1
+GET http://localhost:3050/api/articles/d HTTP/1.1
 
-### api/posts/:userId/add
-POST http://localhost:3050/api/posts/64db8bc94eed2088a3745e77/add HTTP/1.1
+
+### api/articles/:userId
+GET http://localhost:3050/api/articles/64db8bc94eed2088a3745e77 HTTP/1.1
+
+### api/articles/add/:userId
+POST http://localhost:3050/api/articles/add/64db8bc94eed2088a3745e77 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -39,18 +44,9 @@ Content-Type: application/json
     "category": ["Branding", "Nouvelles"]
 }
 
-### api/posts/:userId/add
-POST https://app-agence-aloha.vercel.app/api/posts/64db8bc94eed2088a3745e77/add HTTP/1.1
-Content-Type: application/json
 
-{
-    "title": "Branding et design",
-    "description": "1",
-    "category": ["Branding", "Nouvelles"]
-}
-
-### api/posts/:postId/update
-PUT http://localhost:3050/api/posts/64dbacb3401784bc5b5f140e/update HTTP/1.1
+### api/articles/update/:articleId
+PUT http://localhost:3050/api/articles/update/64e12e52cef97e974b690990 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -59,8 +55,8 @@ Content-Type: application/json
     "category": ["Branding", "Nouvelles"]
 }
 
-### api/posts/:postId/delete
-DELETE http://localhost:3050/api/posts/64dbacb3401784bc5b5f140e/delete HTTP/1.1
+### api/articles/delete/:articleId
+DELETE http://localhost:3050/api/articles/delete/64e12e52cef97e974b690990 HTTP/1.1
 Content-Type: application/json
 
 
@@ -69,8 +65,8 @@ Content-Type: application/json
 ### api/questions/:userId
 GET http://localhost:3050/api/questions/64db8bc94eed2088a3745e77 HTTP/1.1
 
-### api/questions/:userId/add
-POST http://localhost:3050/api/questions/64db8bc94eed2088a3745e77/add HTTP/1.1
+### api/questions/add/:userId
+POST http://localhost:3050/api/questions/add/64db8bc94eed2088a3745e77 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -78,8 +74,8 @@ Content-Type: application/json
     "answer": "Nous disposons des ressources et des méthodes les plus sophistiquées pour la préparation, la mise en oeuvre et l’analyse de vos projets. Nous vous offrons la paix d’esprit ainsi que la qualité garantie."
 }
 
-### api/questions/:questionId/update
-PUT http://localhost:3050/api/questions/64dbacb3401784bc5b5f140e/update HTTP/1.1
+### api/questions/update/:questionId
+PUT http://localhost:3050/api/questions/update/64dbacb3401784bc5b5f140e HTTP/1.1
 Content-Type: application/json
 
 {
@@ -88,6 +84,6 @@ Content-Type: application/json
     "category": ["Branding", "Nouvelles"]
 }
 
-### api/questions/:questionId/delete
-DELETE http://localhost:3050/api/questions/64dbacb3401784bc5b5f140e/delete HTTP/1.1
+### api/questions/delete/:questionId
+DELETE http://localhost:3050/api/questions/delete/64dbacb3401784bc5b5f140e HTTP/1.1
 Content-Type: application/json
