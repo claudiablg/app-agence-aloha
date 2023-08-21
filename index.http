@@ -58,10 +58,10 @@ Content-Type: application/json
 ### QUESTIONS ROUTES
 
 ### api/questions/:userId
-GET http://localhost:3050/api/questions/64db8bc94eed2088a3745e77 HTTP/1.1
+GET http://localhost:3050/api/questions HTTP/1.1
 
 ### api/questions/add/:userId
-POST http://localhost:3050/api/questions/add/64db8bc94eed2088a3745e77 HTTP/1.1
+POST http://localhost:3050/api/questions/add/64e3a7dfb6ca0690d55b9f80 HTTP/1.1
 Content-Type: application/json
 
 {

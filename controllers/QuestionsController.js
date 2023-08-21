@@ -4,9 +4,9 @@ const Questions = require('../models/QuestionsModel');
 
 //get faq by userid
 const getQuestions = async(req, res) => {
-    const userId = req.params.userId;
+    // const userId = req.params.userId;
 
-    const foundQuestions = await Questions.find({userId: userId}).exec();
+    const foundQuestions = await Questions.find().exec();
 
     if(!foundQuestions) return res.json({'message': 'Aucune questions'})
     res.send(foundQuestions)
