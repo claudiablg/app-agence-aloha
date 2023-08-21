@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const User = require('../models/UsersModel');
 const Questions = require('../models/QuestionsModel');
 
-//get posts by userid
+//get faq by userid
 const getQuestions = async(req, res) => {
     const userId = req.params.userId;
 
     const foundQuestions = await Questions.find({userId: userId}).exec();
 
-    if(!foundQuestions) return res.json({'message': 'Aucunes questions'})
+    if(!foundQuestions) return res.json({'message': 'Aucune questions'})
     res.send(foundQuestions)
 }
 

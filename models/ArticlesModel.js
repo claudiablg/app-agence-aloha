@@ -12,6 +12,9 @@ const ArticlesSchema = new Schema({
         type: String,
         // required: true,
     },
+    subtitle: {
+        type: String,
+    },
     description: {
         type: String,
         // required: true,
@@ -20,7 +23,9 @@ const ArticlesSchema = new Schema({
         type: Array,
         // required: true,
     },
-    date: Date,
+    date: {
+        type: Date,
+    } 
 });
 
 module.exports = mongoose.model('Articles', ArticlesSchema);

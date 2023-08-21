@@ -1,0 +1,1 @@
+GET http://localhost:3050/api/articles/64db8bc94eed2088a3745e77 HTTP/1.1
