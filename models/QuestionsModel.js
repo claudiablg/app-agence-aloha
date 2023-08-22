@@ -10,11 +10,11 @@ const QuestionsSchema = new Schema({
     },
     question: {
         type: String,
-        required: true,
+        // required: true,
     },
     answer: {
         type: String,
-        required: true,
+        // required: true,
     },
 });
 
