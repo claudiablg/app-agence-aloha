@@ -25,7 +25,7 @@ const getArticleById = async(req, res) => {
 const addArticle = (req, res) => {
     const userId = req.params.userId;
     // console.log(req.body);
-    const { title, subtitle, description, category } = req.body;
+    const { title, description, category, html, json, plainText } = req.body;
     // console.log(req.body);
     const newArticle = new Articles({
         userId: userId,
@@ -34,6 +34,9 @@ const addArticle = (req, res) => {
         description: description,
         category: category,
         date: new Date(),
+        html: html,
+        json, json,
+        plainText: plainText,
     })
 
     newArticle.save((err, articles) => {

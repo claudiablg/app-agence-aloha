@@ -25,7 +25,17 @@ const ArticlesSchema = new Schema({
     },
     date: {
         type: Date,
-    } 
+    },
+    html: {
+        type: String,
+    },
+    json: {
+        type: JSON,
+    },
+    plainText: {
+        type: String,
+    },
+
 });
 
 module.exports = mongoose.model('Articles', ArticlesSchema);
