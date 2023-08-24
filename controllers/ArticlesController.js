@@ -24,10 +24,11 @@ const getArticleById = async (req, res) => {
 const addArticle = (req, res) => {
   const userId = req.params.userId;
   // console.log(req.body);
-  const { title, subtitle, description, category, html, json, plainText } =
+  const { img, title, subtitle, description, category, html, json, plainText } =
     req.body;
   // console.log(req.body);
   const newArticle = new Articles({
+    img: img,
     userId: userId,
     title: title,
     subtitle: subtitle,
@@ -35,8 +36,7 @@ const addArticle = (req, res) => {
     category: category,
     date: new Date(),
     html: html,
-    json,
-    json,
+    json: json,
     plainText: plainText,
   });
 
