@@ -34,3 +34,4 @@
 20230815	13:15:30	bfe18025-d38f-47b6-9148-aa39373e5105	SyntaxError: Unexpected token 
  in JSON at position 167
 20230819	23:19:46	94226366-2ba8-4230-aa74-704457b2c0ac	SyntaxError: Unexpected token ] in JSON at position 1441
+20230824	12:53:38	167914ca-37cc-4990-b7d8-3005dab6239e	ReferenceError: subtitle is not defined
